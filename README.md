@@ -45,6 +45,7 @@ SQL -> Go:
 
 Migration management:
 
+- https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-migrate
 - https://github.com/golang-migrate/migrate
 - https://github.com/sequelize/umzug
 - https://awesome-go.com/#database
