@@ -12,7 +12,50 @@ Features:
 - Supports [list of databases]
 
 
-# Notes and references:
+## Command Structure
+
+```
+dba
+- init
+- config
+- ui
+
+- migrate
+  - create
+  - view
+  - list
+  - diff
+  - delete
+  - test
+
+- store
+  - create
+  - view
+  - list
+  - checkpoint
+  - restore
+  - delete
+
+  # Things against live store (or run one)
+  - run
+  - conn
+  - diff
+  - up
+  - down
+
+- import
+- export
+- generate
+```
+
+## Cuelibs
+
+- hofmod-cli
+- hofmod-cuecfg
+- hofmod-model
+- structural
+
+## Notes and references:
 
 SQL Drivers / Libraries:
 
