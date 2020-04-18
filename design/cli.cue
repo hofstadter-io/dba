@@ -4,7 +4,7 @@ import (
   "github.com/hofstadter-io/hofmod-cli/schema"
 )
 
-Outdir :: "./" @reln("anystring")
+Outdir :: "./"
 
 _LibImport :: [
 	schema.Import & {Path: CLI.Package + "/lib"},
@@ -14,8 +14,8 @@ CLI :: schema.Cli & {
 	Name:    "dba"
 	Package: "github.com/hofstadter-io/dba"
 
-	Usage: "hof"
-	Short: "Polyglot Code Gereration Framework"
+	Usage: "dba"
+	Short: "Your Database Assistant"
 	Long:  Short
 
 	Releases: CliReleases

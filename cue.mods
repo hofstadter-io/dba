@@ -7,5 +7,6 @@ require (
   github.com/hofstadter-io/hofmod-cli v0.3.5
 )
 
-replace github.com/hofstadter-io/model      => ../mods/hofmod-model
-replace github.com/hofstadter-io/structural => ../cuemods/structural
+replace github.com/hofstadter-io/hofmod-cli   => ../mods/hofmod-cli
+replace github.com/hofstadter-io/hofmod-model => ../mods/hofmod-model
+replace github.com/hofstadter-io/structural   => ../cuemods/structural
