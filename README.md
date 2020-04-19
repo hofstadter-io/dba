@@ -58,8 +58,13 @@ dma
 models/         (default) location for models, can have multiple
 dma/            Dir for dba. You should commit this directory!
   meta.cue      model / store meta data
-  history/      modelset history by subdirectory
-  migrations/   modelset migrations by subdirectory
+  modelsets/
+    <modelset-name>/
+      history/        # modelset history by subdirectory
+      migrations/     # modelset migrations by subdirectory
+  stores/
+    <store-name>/
+      data/           # for local running instances ???
 ```
 
 ## Cuelibs
@@ -114,3 +119,11 @@ Other:
 - https://github.com/google/go-cloud
 - https://github.com/google/wire
 - https://github.com/Azure/autorest
+
+
+## Other ideas
+
+Generate and/or manage seed data, database snapshots
+
+- create snapshot from current state
+- fill with snapshot

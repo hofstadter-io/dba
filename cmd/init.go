@@ -33,35 +33,7 @@ var InitCmd = &cobra.Command{
 
 		// Argument Parsing
 
-		if 0 >= len(args) {
-			fmt.Println("missing required argument: 'Dstype'")
-			cmd.Usage()
-			os.Exit(1)
-		}
-
-		var dstype string
-
-		if 0 < len(args) {
-
-			dstype = args[0]
-
-		}
-
-		if 1 >= len(args) {
-			fmt.Println("missing required argument: 'Name'")
-			cmd.Usage()
-			os.Exit(1)
-		}
-
-		var name string
-
-		if 1 < len(args) {
-
-			name = args[1]
-
-		}
-
-		err = libcmd.InitRun(dstype, name)
+		err = libcmd.InitRun()
 
 		if err != nil {
 			fmt.Println(err)
