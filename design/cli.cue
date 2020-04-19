@@ -22,6 +22,8 @@ CLI :: schema.Cli & {
 
 	OmitRun: true
 
+  PersistentPrerun: true
+
   Pflags: CliPflags
 
 	Commands: [
@@ -31,7 +33,7 @@ CLI :: schema.Cli & {
     UiCommand,
 
     // main
-    MigrateCommand,
+    ModelCommand,
     StoreCommand,
 
     // outer

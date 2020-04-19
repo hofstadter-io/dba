@@ -19,6 +19,10 @@ var StoreCmd = &cobra.Command{
 
 	Use: "store",
 
+	Aliases: []string{
+		"s",
+	},
+
 	Short: "create, checkpoint, and migrate your storage engines",
 
 	Long: storeLong,

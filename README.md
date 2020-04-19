@@ -20,12 +20,14 @@ dma
 - config
 - ui
 
-- migrate
+- modelset
   - create
   - view
   - list
   - status
+  - graph
   - diff
+  - migrate
   - delete
   - test
 
@@ -39,6 +41,7 @@ dma
 
   # Things against live store (or run one)
   - run
+  - status
   - conn
   - diff
   - up
@@ -47,6 +50,16 @@ dma
 - import
 - export
 - generate
+```
+
+## DMA directories and files
+
+```
+models/         (default) location for models, can have multiple
+dma/            Dir for dba. You should commit this directory!
+  meta.cue      model / store meta data
+  history/      modelset history by subdirectory
+  migrations/   modelset migrations by subdirectory
 ```
 
 ## Cuelibs

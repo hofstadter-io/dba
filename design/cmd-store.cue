@@ -7,6 +7,7 @@ import (
 StoreCommand :: schema.Command & {
   Name:    "store"
   Usage:   "store"
+  Aliases: ["s"]
   Short:   "create, checkpoint, and migrate your storage engines"
   Long:    Short
 
