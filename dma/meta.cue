@@ -5,11 +5,11 @@ modelsets: {
     }
 
     stores: {
-      test: "test"
+      test: "test" @reln("many-to-many=foo")
       dev:  "dev"
     }
   }
-}
+} @attrtest("modelset=test")
 
 stores: {
   test: {
@@ -22,4 +22,4 @@ stores: {
     type: "psql"
     version: "12.2"
   }
-}
+} @attrtest("stores='test'") @foogoo("cow='moo',cat='meow'")
