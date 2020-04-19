@@ -1,22 +1,17 @@
 package cmd
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/spf13/cobra"
 
+	"github.com/hofstadter-io/dma/cmd/store"
 	/*
 		false
 		false
-		false
-		false
-		false
 		true
-	*/
-
-	"github.com/hofstadter-io/dba/lib/cmd"
-)
+		false
+		false
+		false
+	*/)
 
 var storeLong = `create, checkpoint, and migrate your storage engines`
 
@@ -27,17 +22,9 @@ var StoreCmd = &cobra.Command{
 	Short: "create, checkpoint, and migrate your storage engines",
 
 	Long: storeLong,
+}
 
-	Run: func(cmd *cobra.Command, args []string) {
-		var err error
-
-		// Argument Parsing
-
-		err = libcmd.StoreRun()
-
-		if err != nil {
-			fmt.Println(err)
-			os.Exit(1)
-		}
-	},
+func init() {
+	StoreCmd.AddCommand(cmdstore.RunCmd)
+	StoreCmd.AddCommand(cmdstore.ConnCmd)
 }

@@ -5,7 +5,7 @@ import (
 	// "github.com/spf13/viper"
 )
 
-var dbaLong = `Your Database Assistant`
+var dmaLong = `Your Data Model Assistant`
 
 var (
 	RootConfigPflag  string
@@ -14,7 +14,7 @@ var (
 
 func init() {
 
-	RootCmd.PersistentFlags().StringVarP(&RootConfigPflag, "config", "c", "", "The path to a dba config file")
+	RootCmd.PersistentFlags().StringVarP(&RootConfigPflag, "config", "c", "", "The path to a dma config file")
 
 	RootCmd.PersistentFlags().StringVarP(&RootContextPflag, "context", "C", "", "the context to use during this hof execution")
 
@@ -22,11 +22,11 @@ func init() {
 
 var RootCmd = &cobra.Command{
 
-	Use: "dba",
+	Use: "dma",
 
-	Short: "Your Database Assistant",
+	Short: "Your Data Model Assistant",
 
-	Long: dbaLong,
+	Long: dmaLong,
 }
 
 func init() {

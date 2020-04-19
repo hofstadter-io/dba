@@ -1,4 +1,4 @@
-module github.com/hofstadter-io/dba
+module github.com/hofstadter-io/dma
 
 go 1.14
 

@@ -15,16 +15,16 @@ import (
 		true
 	*/
 
-	"github.com/hofstadter-io/dba/lib/cmd"
+	"github.com/hofstadter-io/dma/lib/cmd"
 )
 
-var initLong = `init the current directory for dba usage.`
+var initLong = `init the current directory for dma usage.`
 
 var InitCmd = &cobra.Command{
 
 	Use: "init",
 
-	Short: "init the current directory for dba usage.",
+	Short: "init the current directory for dma usage.",
 
 	Long: initLong,
 
@@ -33,7 +33,35 @@ var InitCmd = &cobra.Command{
 
 		// Argument Parsing
 
-		err = libcmd.InitRun()
+		if 0 >= len(args) {
+			fmt.Println("missing required argument: 'Dstype'")
+			cmd.Usage()
+			os.Exit(1)
+		}
+
+		var dstype string
+
+		if 0 < len(args) {
+
+			dstype = args[0]
+
+		}
+
+		if 1 >= len(args) {
+			fmt.Println("missing required argument: 'Name'")
+			cmd.Usage()
+			os.Exit(1)
+		}
+
+		var name string
+
+		if 1 < len(args) {
+
+			name = args[1]
+
+		}
+
+		err = libcmd.InitRun(dstype, name)
 
 		if err != nil {
 			fmt.Println(err)

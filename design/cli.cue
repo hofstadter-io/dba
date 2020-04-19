@@ -11,11 +11,11 @@ _LibImport :: [
 ]
 
 CLI :: schema.Cli & {
-	Name:    "dba"
-	Package: "github.com/hofstadter-io/dba"
+	Name:    "dma"
+	Package: "github.com/hofstadter-io/dma"
 
-	Usage: "dba"
-	Short: "Your Database Assistant"
+	Usage: "dma"
+	Short: "Your Data Model Assistant"
 	Long:  Short
 
 	Releases: CliReleases

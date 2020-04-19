@@ -7,7 +7,7 @@ import (
 UiCommand :: schema.Command & {
   Name:    "ui"
   Usage:   "ui"
-  Short:   "run dba's local web ui"
+  Short:   "run dma's local web ui"
   Long:    Short
 },
 

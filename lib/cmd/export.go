@@ -8,7 +8,7 @@ func ExportRun() (err error) {
 
 	// Default body
 
-	fmt.Println("dba export")
+	fmt.Println("dma export")
 
 	return err
 }

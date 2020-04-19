@@ -15,16 +15,16 @@ import (
 		true
 	*/
 
-	"github.com/hofstadter-io/dba/lib/cmd"
+	"github.com/hofstadter-io/dma/lib/cmd"
 )
 
-var uiLong = `run dba's local web ui`
+var uiLong = `run dma's local web ui`
 
 var UiCmd = &cobra.Command{
 
 	Use: "ui",
 
-	Short: "run dba's local web ui",
+	Short: "run dma's local web ui",
 
 	Long: uiLong,
 

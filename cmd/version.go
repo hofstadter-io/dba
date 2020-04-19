@@ -25,7 +25,7 @@ GoVersion:   %s
 OS / Arch:   %s %s
 `
 
-var VersionLong = `Print the build version for dba`
+var VersionLong = `Print the build version for dma`
 
 var VersionCmd = &cobra.Command{
 

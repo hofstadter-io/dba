@@ -8,7 +8,7 @@ func UiRun() (err error) {
 
 	// Default body
 
-	fmt.Println("dba ui")
+	fmt.Println("dma ui")
 
 	return err
 }

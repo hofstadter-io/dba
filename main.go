@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/hofstadter-io/dba/cmd"
+	"github.com/hofstadter-io/dma/cmd"
 )
 
 func main() {

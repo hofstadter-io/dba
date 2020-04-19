@@ -1,8 +1,8 @@
 FROM scratch
 MAINTAINER Hofstadter, Inc <support@hofstadter.io>
 
-COPY dba /
-ENTRYPOINT ["/dba"]
+COPY dma /
+ENTRYPOINT ["/dma"]
 
 VOLUME ["/work"]
 WORKDIR /work

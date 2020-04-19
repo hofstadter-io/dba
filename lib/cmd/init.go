@@ -4,11 +4,11 @@ import (
 	"fmt"
 )
 
-func InitRun() (err error) {
+func InitRun(dstype string, name string) (err error) {
 
 	// Default body
 
-	fmt.Println("dba init")
+	fmt.Println("dma init", dstype, name)
 
 	return err
 }

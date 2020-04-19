@@ -8,7 +8,7 @@ func ImportRun() (err error) {
 
 	// Default body
 
-	fmt.Println("dba import")
+	fmt.Println("dma import")
 
 	return err
 }

@@ -1,22 +1,17 @@
 package cmd
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/spf13/cobra"
 
+	"github.com/hofstadter-io/dma/cmd/migrate"
 	/*
 		false
 		false
-		false
-		false
-		false
 		true
-	*/
-
-	"github.com/hofstadter-io/dba/lib/cmd"
-)
+		false
+		false
+		false
+	*/)
 
 var migrateLong = `view, prepare, and make migrations to your data model.`
 
@@ -27,17 +22,14 @@ var MigrateCmd = &cobra.Command{
 	Short: "view, prepare, and make migrations to your data model.",
 
 	Long: migrateLong,
+}
 
-	Run: func(cmd *cobra.Command, args []string) {
-		var err error
-
-		// Argument Parsing
-
-		err = libcmd.MigrateRun()
-
-		if err != nil {
-			fmt.Println(err)
-			os.Exit(1)
-		}
-	},
+func init() {
+	MigrateCmd.AddCommand(cmdmigrate.CreateCmd)
+	MigrateCmd.AddCommand(cmdmigrate.ViewCmd)
+	MigrateCmd.AddCommand(cmdmigrate.ListCmd)
+	MigrateCmd.AddCommand(cmdmigrate.StatusCmd)
+	MigrateCmd.AddCommand(cmdmigrate.DiffCmd)
+	MigrateCmd.AddCommand(cmdmigrate.TestCmd)
+	MigrateCmd.AddCommand(cmdmigrate.DeleteCmd)
 }

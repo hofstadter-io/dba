@@ -1,8 +1,8 @@
 FROM debian:jessie
 MAINTAINER Hofstadter, Inc <support@hofstadter.io>
 
-COPY dba /usr/bin/local
-ENTRYPOINT ["dba"]
+COPY dma /usr/bin/local
+ENTRYPOINT ["dma"]
 
 VOLUME ["/work"]
 WORKDIR /work

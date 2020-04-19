@@ -15,7 +15,7 @@ import (
 		true
 	*/
 
-	"github.com/hofstadter-io/dba/lib/cmd/config"
+	"github.com/hofstadter-io/dma/lib/cmd/config"
 )
 
 var useLong = `set the default configuration`

@@ -1,12 +1,12 @@
-# dba - a datastore assistant.
+# DMA - Your Data Model Assistant.
 
-`dba` is a tool to help you manage your data
+`dma` is a tool to help you manage your data
 schemas, migrations, servers, and more.
 
 Features:
 
-- Schemas written in Cue. All the power of Cue and `dba` will turn into SQL,libraries, and tools.
-- Migration calculation and management. `dba` tracks how your schema changes and handles the rest.
+- Schemas written in Cue. All the power of Cue and `dma` will turn into SQL,libraries, and tools.
+- Migration calculation and management. `dma` tracks how your schema changes and handles the rest.
 - Manage local, test, cicd, and production servers.
 - Visual tool for interacting.
 - Supports [list of databases]
@@ -15,7 +15,7 @@ Features:
 ## Command Structure
 
 ```
-dba
+dma
 - init
 - config
 - ui
@@ -24,6 +24,7 @@ dba
   - create
   - view
   - list
+  - status
   - diff
   - delete
   - test

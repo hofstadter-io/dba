@@ -15,7 +15,7 @@ import (
 		true
 	*/
 
-	"github.com/hofstadter-io/dba/lib/cmd"
+	"github.com/hofstadter-io/dma/lib/cmd"
 )
 
 var importLong = `Import and create a data model from a multitude of sources such as

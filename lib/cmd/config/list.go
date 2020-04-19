@@ -8,7 +8,7 @@ func ListRun() (err error) {
 
 	// Default body
 
-	fmt.Println("dba config list")
+	fmt.Println("dma config list")
 
 	return err
 }

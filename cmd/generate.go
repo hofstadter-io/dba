@@ -15,7 +15,7 @@ import (
 		true
 	*/
 
-	"github.com/hofstadter-io/dba/lib/cmd"
+	"github.com/hofstadter-io/dma/lib/cmd"
 )
 
 var generateLong = `generate libraries and utilies for your data model`

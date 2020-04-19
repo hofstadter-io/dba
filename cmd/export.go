@@ -15,7 +15,7 @@ import (
 		true
 	*/
 
-	"github.com/hofstadter-io/dba/lib/cmd"
+	"github.com/hofstadter-io/dma/lib/cmd"
 )
 
 var exportLong = `export your data model to various formats`

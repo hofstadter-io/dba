@@ -8,7 +8,7 @@ func GenerateRun() (err error) {
 
 	// Default body
 
-	fmt.Println("dba generate")
+	fmt.Println("dma generate")
 
 	return err
 }

@@ -6,11 +6,11 @@ import (
 
 CliReleases :: schema.GoReleaser & {
   Author:   "Hofstadter, Inc"
-  Homepage: "https://github.com/hofstadter-io/dba"
+  Homepage: "https://github.com/hofstadter-io/dma"
 
   GitHub: {
     Owner: "hofstadter-io"
-    Repo:  "dba"
+    Repo:  "dma"
   }
 
   Docker: {

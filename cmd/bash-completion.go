@@ -10,12 +10,12 @@ var BashCompletionLong = `Generate Bash completions
 
 To load completion run
 
-. <(dba bash)
+. <(dma bash)
 
 To configure your bash shell to load completions for each session add to your bashrc
 
 # ~/.bashrc or ~/.profile
-. <(dba bash)
+. <(dma bash)
 `
 
 var BashCompletionCmd = &cobra.Command{
