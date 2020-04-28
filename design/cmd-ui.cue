@@ -4,7 +4,7 @@ import (
 	"github.com/hofstadter-io/hofmod-cli/schema"
 )
 
-UiCommand :: schema.Command & {
+#UiCommand: schema.#Command & {
   Name:    "ui"
   Usage:   "ui"
   Short:   "run dma's local web ui"

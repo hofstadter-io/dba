@@ -4,7 +4,7 @@ import (
 	"github.com/hofstadter-io/hofmod-cuefig/schema"
 )
 
-DmaConfig :: schema.Config & {
+#DmaConfig: schema.#Config & {
   Name: "dma"
   Entrypoint: "dma/meta.cue"
 

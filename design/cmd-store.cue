@@ -4,7 +4,7 @@ import (
 	"github.com/hofstadter-io/hofmod-cli/schema"
 )
 
-StoreCommand :: schema.Command & {
+#StoreCommand: schema.#Command & {
   Name:    "store"
   Usage:   "store"
   Aliases: ["s"]
@@ -13,7 +13,7 @@ StoreCommand :: schema.Command & {
 
   OmitRun: true
 
-  Commands: [...schema.Command] & [
+  Commands: [...schema.#Command] & [
     {
       Name:  "run"
       Usage: "run"
@@ -21,7 +21,7 @@ StoreCommand :: schema.Command & {
       Short: "run local datastore servers"
       Long:  Short
 
-      Args: [...schema.Arg] & [
+      Args: [...schema.#Arg] & [
         {
           Name:     "dstype"
           Type:     "string"
@@ -41,7 +41,7 @@ StoreCommand :: schema.Command & {
       Usage: "conn"
       Short: "connect to the local datastore"
       Long:  Short
-      Args: [...schema.Arg] & [
+      Args: [...schema.#Arg] & [
         {
           Name:     "name"
           Type:     "string"

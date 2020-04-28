@@ -4,7 +4,7 @@ import (
 	"github.com/hofstadter-io/hofmod-cli/schema"
 )
 
-ModelCommand :: schema.Command & {
+#ModelCommand: schema.#Command & {
   Name:    "modelset"
   Usage:   "modelset"
   Aliases: ["model", "m"]
@@ -13,19 +13,25 @@ ModelCommand :: schema.Command & {
 
   OmitRun: true
 
-  Commands: [...schema.Command] & [
+  Commands: [...schema.#Command] & [
     {
       Name:  "create"
       Usage: "create"
       Short: "create a modelset"
       Long:  Short
 
-      Args: [...schema.Arg] & [
+      Args: [...schema.#Arg] & [
         {
           Name:     "name"
           Type:     "string"
           Required: true
           Help:     "modelset name"
+        },
+        {
+          Name:     "entrypoint"
+          Type:     "string"
+          Default:  "\"models\""
+          Help:     "the directory where your modelset will exist"
         },
       ]
     },
@@ -34,7 +40,7 @@ ModelCommand :: schema.Command & {
       Usage: "view"
       Short: "view modelset information"
       Long:  Short
-      Args: [...schema.Arg] & [
+      Args: [...schema.#Arg] & [
         {
           Name:     "name"
           Type:     "string"
@@ -54,7 +60,7 @@ ModelCommand :: schema.Command & {
       Usage: "status"
       Short: "show the current status for a modelset"
       Long:  Short
-      Args: [...schema.Arg] & [
+      Args: [...schema.#Arg] & [
         {
           Name:     "name"
           Type:     "string"
@@ -68,7 +74,7 @@ ModelCommand :: schema.Command & {
       Usage: "graph"
       Short: "show the relationship graph for a modelset"
       Long:  Short
-      Args: [...schema.Arg] & [
+      Args: [...schema.#Arg] & [
         {
           Name:     "name"
           Type:     "string"
@@ -82,7 +88,7 @@ ModelCommand :: schema.Command & {
       Usage: "diff"
       Short: "show the current diff for a modelset"
       Long:  Short
-      Args: [...schema.Arg] & [
+      Args: [...schema.#Arg] & [
         {
           Name:     "name"
           Type:     "string"
@@ -96,7 +102,7 @@ ModelCommand :: schema.Command & {
       Usage: "migrate"
       Short: "create the next migration for a modelset"
       Long:  Short
-      Args: [...schema.Arg] & [
+      Args: [...schema.#Arg] & [
         {
           Name:     "name"
           Type:     "string"
@@ -110,7 +116,7 @@ ModelCommand :: schema.Command & {
       Usage: "test"
       Short: "test the current migration and diff for a modelset"
       Long:  Short
-      Args: [...schema.Arg] & [
+      Args: [...schema.#Arg] & [
         {
           Name:     "name"
           Type:     "string"
@@ -124,7 +130,7 @@ ModelCommand :: schema.Command & {
       Usage: "delete"
       Short: "delete a modelset permentantly"
       Long:  Short
-      Args: [...schema.Arg] & [
+      Args: [...schema.#Arg] & [
         {
           Name:     "name"
           Type:     "string"

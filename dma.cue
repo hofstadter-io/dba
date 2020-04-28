@@ -6,12 +6,12 @@ import (
 	"github.com/hofstadter-io/dma/design"
 )
 
-HofGenCli: cli.HofGenerator & {
+HofGenCli: cli.#HofGenerator & {
   Outdir: "./"
-  Cli: design.CLI
+  Cli: design.#CLI
 }
 
-HofGenDma: cuefig.HofGenerator & {
+HofGenDma: cuefig.#HofGenerator & {
   Outdir: "./"
-  Config: design.DmaConfig
+  Config: design.#DmaConfig
 }

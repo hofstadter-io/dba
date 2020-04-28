@@ -4,7 +4,7 @@ import (
 	"github.com/hofstadter-io/hofmod-cli/schema"
 )
 
-ImportCommand :: schema.Command & {
+#ImportCommand: schema.#Command & {
   Name:    "import"
   Usage:   "import"
   Short:   "import and create a data model from a multitude of sources"

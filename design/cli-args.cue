@@ -5,7 +5,7 @@ import (
 )
 
 // Name arg
-nameArg :: schema.Arg & {
+#nameArg: schema.#Arg & {
 	Name:     "name"
 	Type:     "string"
 	Required: true
@@ -13,7 +13,7 @@ nameArg :: schema.Arg & {
 }
 
 // Identifyier (name or id)
-identArg :: schema.Arg & {
+#identArg: schema.#Arg & {
 	Name:     "ident"
 	Type:     "string"
 	Required: true
@@ -21,13 +21,13 @@ identArg :: schema.Arg & {
 }
 
 // input arg
-inputArg :: schema.Arg & {
+#inputArg: schema.#Arg & {
 	Name:     "input"
 	Type:     "string"
 	Required: true
 }
 
-contextArg :: schema.Arg & {
+#contextArg: schema.#Arg & {
 	Name: "context"
 	Type: "string"
 	Help: "A context name"

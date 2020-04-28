@@ -107,6 +107,7 @@ SQL -> Go:
 
 Migration management:
 
+- https://github.com/facebookincubator/ent
 - https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-migrate
 - https://github.com/golang-migrate/migrate
 - https://github.com/sequelize/umzug

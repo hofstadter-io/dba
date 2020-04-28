@@ -8,14 +8,14 @@ modelsets: {
     }
   }
   other: {
-    entry: "others"
+    entry: "others" @entry(hof=geb)
 
     stores: {
-      test: "test"
+      test: "test" @hof("geb")
       dev:  "dev"
     }
-  }
-}
+  } @hof(geb=weird) @geb()
+} @model(hof=goo)
 
 stores: {
   test: {
@@ -28,4 +28,9 @@ stores: {
     type: "psql"
     version: "12.2"
   }
+}
+
+ex: {
+  foo: attrs(modelsets)
+  goo: attrs(modelsets.other)
 }
