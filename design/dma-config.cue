@@ -5,7 +5,7 @@ import (
 )
 
 #DmaConfig: schema.#Config & {
-  Name: "dma"
+  Name: "config"
   Entrypoint: "\(#CLI.ConfigDir)/config.cue"
 
   ConfigSchema: {
@@ -15,6 +15,17 @@ import (
     stores: {
       name: "string"
       type: "string"
+    }
+  }
+}
+
+#DmaCredentials: schema.#Config & {
+  Name: "creds"
+  Entrypoint: "\(#CLI.ConfigDir)/credentials.cue"
+
+  ConfigSchema: {
+    [Cred=string]: {
+      [Key=string]: string
     }
   }
 }

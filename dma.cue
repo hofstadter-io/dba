@@ -11,7 +11,12 @@ HofGenCli: cli.#HofGenerator & {
   Cli: design.#CLI
 }
 
-HofGenDma: cuefig.#HofGenerator & {
+HofGenConfig: cuefig.#HofGenerator & {
   Outdir: "./"
   Config: design.#DmaConfig
+}
+
+HofGenCreds: cuefig.#HofGenerator & {
+  Outdir: "./"
+  Config: design.#DmaCredentials
 }

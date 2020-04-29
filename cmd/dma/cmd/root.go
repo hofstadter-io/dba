@@ -18,6 +18,7 @@ var dmaLong = `Your Data Model Assistant`
 func init() {
 
 	RootCmd.PersistentFlags().StringVarP(&pflags.RootConfigPflag, "config", "c", "", "The path to a dma config file")
+	RootCmd.PersistentFlags().StringVarP(&pflags.RootCredsPflag, "creds", "C", "", "The path to a dma creds file")
 }
 
 func RootPersistentPreRun(args []string) (err error) {

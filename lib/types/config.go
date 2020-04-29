@@ -4,7 +4,7 @@ import (
 	"cuelang.org/go/cue"
 )
 
-type DmaConfig struct {
+type Config struct {
 	Modelsets map[string]Modelset
 	Stores    map[string]Store
 

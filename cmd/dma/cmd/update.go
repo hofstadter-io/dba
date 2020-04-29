@@ -32,8 +32,13 @@ func init() {
 	UpdateCmd.Flags().BoolVarP(&UpdateServeFlag, "serve", "", false, "start an update checking server")
 }
 
-const checkURL = `https://updates.dmatool.com/check`
-const fetchURL = `<no value>`
+var checkURL = `https://updates.dmatool.com/check`
+
+func init() {
+	if Commit == "Dirty" {
+		checkURL = `http://localhost:8080/check`
+	}
+}
 
 const updateMessage = `
 Updates available. v%s -> %s (latest)
@@ -270,8 +275,7 @@ func ServeUpdates() (err error) {
 			return
 		}
 
-		// url := "https://api.github.com/repos/hofstadter-io/dma/releases/latest"
-		url := "https://api.github.com/repos/hofstadter-io/hof/releases/latest"
+		url := "https://api.github.com/repos/hofstadter-io/dma/releases/latest"
 		req := gorequest.New().Get(url)
 		resp, body, errs := req.End()
 

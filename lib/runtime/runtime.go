@@ -33,8 +33,10 @@ func GetRuntime() *Runtime {
 }
 
 type Runtime struct {
-	DmaConfig *types.DmaConfig
-	DmaCueVal cue.Value
+	Config       *types.Config
+	ConfigCueVal cue.Value
+	Creds        *types.Creds
+	CredsCueVal  cue.Value
 }
 
 func NewRuntime() *Runtime {
@@ -43,25 +45,31 @@ func NewRuntime() *Runtime {
 
 func (R *Runtime) Init() error {
 
-	R.DmaConfig = &types.DmaConfig{}
-	var val cue.Value
+	R.Config = &types.Config{}
+	var val1, val2 cue.Value
 	var err error
 	if pflags.RootConfigPflag != "" {
-		val, err = cuefig.LoadDmaConfig(pflags.RootConfigPflag, R.DmaConfig)
+		val1, err = cuefig.LoadConfigConfig(pflags.RootConfigPflag, R.Config)
 	} else {
-		val, err = cuefig.LoadDmaDefault(R.DmaConfig)
+		val1, err = cuefig.LoadConfigDefault(R.Config)
+	}
+	if pflags.RootCredsPflag != "" {
+		val2, err = cuefig.LoadCredsConfig(pflags.RootCredsPflag, R.Creds)
+	} else {
+		val2, err = cuefig.LoadCredsDefault(R.Creds)
 	}
 
 	if err != nil {
 		return err
 	}
-	R.DmaCueVal = val
+	R.ConfigCueVal = val1
+	R.CredsCueVal = val2
 	return nil
 }
 
 func (R *Runtime) Print() error {
 	// Get top level struct from cuelang
-	S, err := R.DmaCueVal.Struct()
+	S, err := R.ConfigCueVal.Struct()
 	if err != nil {
 		return err
 	}

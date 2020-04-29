@@ -1,10 +1,11 @@
 package cuefig
 
-// Name: dma
+// Name: config
 
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"cuelang.org/go/cue"
@@ -15,24 +16,24 @@ import (
 	"github.com/hofstadter-io/hof/lib/util"
 )
 
-var DmaFilepath string
+var ConfigFilepath string
 
 func init() {
 	cfgdir, err := os.UserConfigDir()
 	if err == nil {
-		DmaFilepath = filepath.Join(cfgdir, "dma/config.cue")
+		ConfigFilepath = filepath.Join(cfgdir, "dma/config.cue")
 	} else {
-		DmaFilepath = "dma/config.cue"
+		ConfigFilepath = "dma/config.cue"
 	}
 }
 
-func LoadDmaDefault(cfg interface{}) (cue.Value, error) {
-	return LoadDmaConfig(DmaFilepath, cfg)
+func LoadConfigDefault(cfg interface{}) (cue.Value, error) {
+	return LoadConfigConfig(ConfigFilepath, cfg)
 }
 
-func LoadDmaConfig(entry string, cfg interface{}) (val cue.Value, err error) {
+func LoadConfigConfig(entry string, cfg interface{}) (val cue.Value, err error) {
 
-	_, err = os.Lstat(DmaFilepath)
+	_, err = os.Lstat(ConfigFilepath)
 	if err != nil {
 		if _, ok := err.(*os.PathError); !ok && (strings.Contains(err.Error(), "file does not exist") || strings.Contains(err.Error(), "no such file")) {
 			// error is worse than non-existant
