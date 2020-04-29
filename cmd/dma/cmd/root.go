@@ -9,6 +9,8 @@ import (
 	// "github.com/spf13/viper"
 
 	"github.com/hofstadter-io/dma/cmd/dma/pflags"
+
+	"github.com/hofstadter-io/dma/lib/runtime"
 )
 
 var dmaLong = `Your Data Model Assistant`
@@ -16,10 +18,18 @@ var dmaLong = `Your Data Model Assistant`
 func init() {
 
 	RootCmd.PersistentFlags().StringVarP(&pflags.RootConfigPflag, "config", "c", "", "The path to a dma config file")
-	RootCmd.PersistentFlags().StringVarP(&pflags.RootContextPflag, "context", "C", "", "the context to use during this hof execution")
 }
 
 func RootPersistentPreRun(args []string) (err error) {
+
+	runtime.Init()
+
+	return err
+}
+
+func RootPersistentPostRun(args []string) (err error) {
+
+	WaitPrintUpdateAvail()
 
 	return err
 }
@@ -38,6 +48,18 @@ var RootCmd = &cobra.Command{
 		// Argument Parsing
 
 		err = RootPersistentPreRun(args)
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+	},
+
+	PersistentPostRun: func(cmd *cobra.Command, args []string) {
+		var err error
+
+		// Argument Parsing
+
+		err = RootPersistentPostRun(args)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)

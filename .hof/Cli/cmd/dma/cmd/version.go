@@ -2,6 +2,10 @@ package cmd
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
+	"runtime"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -15,6 +19,16 @@ var (
 	BuildOS   = "Unknown"
 	BuildArch = "Unknown"
 )
+
+func init() {
+
+	if BuildDate == "Unknown" {
+		BuildDate = time.Now().String()
+		GoVersion = "run 'go version', you should have been the one who built this"
+		BuildOS = runtime.GOOS
+		BuildArch = runtime.GOARCH
+	}
+}
 
 const versionMessage = `
 Version:     v%s
@@ -40,6 +54,10 @@ var VersionCmd = &cobra.Command{
 	Long: VersionLong,
 
 	Run: func(cmd *cobra.Command, args []string) {
+
+		s, e := os.UserConfigDir()
+		fmt.Printf("dma ConfigDir %q %v\n", filepath.Join(s, "dma"), e)
+
 		fmt.Printf(
 			versionMessage,
 			Version,

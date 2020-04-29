@@ -29,8 +29,3 @@ stores: {
     version: "12.2"
   }
 }
-
-ex: {
-  foo: attrs(modelsets)
-  goo: attrs(modelsets.other)
-}

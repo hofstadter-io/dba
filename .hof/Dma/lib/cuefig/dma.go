@@ -15,7 +15,16 @@ import (
 	"github.com/hofstadter-io/hof/lib/util"
 )
 
-const DmaFilepath = "dma/meta.cue"
+var DmaFilepath string
+
+func init() {
+	cfgdir, err := os.UserConfigDir()
+	if err == nil {
+		DmaFilepath = filepath.Join(cfgdir, "dma/config.cue")
+	} else {
+		DmaFilepath = "dma/config.cue"
+	}
+}
 
 func LoadDmaDefault(cfg interface{}) (cue.Value, error) {
 	return LoadDmaConfig(DmaFilepath, cfg)
@@ -29,8 +38,9 @@ func LoadDmaConfig(entry string, cfg interface{}) (val cue.Value, err error) {
 			// error is worse than non-existant
 			return val, err
 		}
-		// otherwise, does not exist, so we should init
-		return val, nil
+		// otherwise, does not exist, so we should init?
+		// XXX want to let applications decide how to handle this
+		return val, err
 	}
 
 	var errs []error

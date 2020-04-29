@@ -6,7 +6,7 @@ import (
 
 #DmaConfig: schema.#Config & {
   Name: "dma"
-  Entrypoint: "dma/meta.cue"
+  Entrypoint: "\(#CLI.ConfigDir)/config.cue"
 
   ConfigSchema: {
     models: {

@@ -13,14 +13,6 @@ import (
     Long:    "config"
     Short:   "c"
   },
-  {
-    Name:    "context"
-    Long:    "context"
-    Short:   "C"
-    Type:    "string"
-    Default: ""
-    Help:    "the context to use during this hof execution"
-  },
 ]
 
 

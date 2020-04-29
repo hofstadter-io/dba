@@ -1,10 +1,12 @@
 package schema
 
-#ModelSet: [Name=string]: {
+#Modelset: [Name=string]: {
   _Name: Name
 
+  Tags: [...string]
+
   Models: #Model
-  ModelSets: #ModelSet
+  Modelsets: #Modelset
 
   Stores: #Store
 }

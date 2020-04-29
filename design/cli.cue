@@ -21,9 +21,15 @@ import (
 
 	Releases: #CliReleases
 
+  Updates: {
+    CheckURL: "https://updates.dmatool.com/check"
+    DevCheckURL: "http://localhost:8080/check"
+  }
+
 	OmitRun: true
 
   PersistentPrerun: true
+  PersistentPostrun: true
 
   Pflags: #CliPflags
 
