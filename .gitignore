@@ -2,3 +2,4 @@
 /vendor/
 /test/cue.mod/pkg/
 /test/cue.mod/pkg/
+/cmd/dma/dist/

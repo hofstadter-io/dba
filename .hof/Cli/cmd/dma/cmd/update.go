@@ -3,10 +3,14 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
 	"os"
+	"os/exec"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -107,6 +111,9 @@ type ProgramVersion struct {
 }
 
 func CheckUpdate(manual bool) (ver ProgramVersion, err error) {
+	if !manual && os.Getenv("DMA_UPDATES_DISABLED") != "" {
+		return
+	}
 	UpdateStarted = true
 	cur := ProgramVersion{Version: "v" + Version}
 
@@ -114,7 +121,9 @@ func CheckUpdate(manual bool) (ver ProgramVersion, err error) {
 		Query("current=" + cur.Version).
 		Query("manual=" + fmt.Sprint(manual))
 
-	req.Query("args=" + url.QueryEscape(strings.Join(os.Args, " ")))
+	if os.Getenv("DMA_TELEMETRY_DISABLED") != "" {
+		req.Query("args=" + url.QueryEscape(strings.Join(os.Args, " ")))
+	}
 
 	resp, b, errs := req.EndBytes()
 	UpdateErrored = true
@@ -217,13 +226,11 @@ func InstallLatest() (err error) {
 		U := asset["browser_download_url"].(string)
 		u := strings.ToLower(U)
 
-		fmt.Println("  url:", u)
-
 		osOk, archOk := false, false
 
 		switch BuildOS {
 		case "linux":
-			if strings.Contains(u, "windows") {
+			if strings.Contains(u, "linux") {
 				osOk = true
 			}
 
@@ -255,10 +262,23 @@ func InstallLatest() (err error) {
 
 		if osOk && archOk {
 			url = u
+			break
 		}
 	}
 
-	fmt.Println("URL: ", url)
+	fmt.Println("Download URL: ", url, "\n")
+
+	switch BuildOS {
+	case "linux":
+		fallthrough
+	case "darwin":
+
+		return downloadAndInstall(url)
+
+	case "windows":
+		fmt.Println("Please downlaod and install manually from the link above.\n")
+		return nil
+	}
 
 	return nil
 }
@@ -302,5 +322,78 @@ func ServeUpdates() (err error) {
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 
+	return nil
+}
+
+func downloadAndInstall(url string) error {
+	req := gorequest.New().Get(url)
+	resp, content, errs := req.EndBytes()
+
+	check := "http2: server sent GOAWAY and closed the connection"
+	if len(errs) != 0 && !strings.Contains(errs[0].Error(), check) {
+		fmt.Println("errs:", errs)
+		fmt.Println("resp:", resp)
+		return errs[0]
+	}
+
+	if len(errs) != 0 || resp.StatusCode >= 400 {
+		return fmt.Errorf("Error %v - %s", resp.StatusCode, string(content))
+	}
+
+	tmpfile, err := ioutil.TempFile("", "example")
+	if err != nil {
+		return err
+	}
+
+	// defer os.Remove(tmpfile.Name()) // clean up
+
+	if _, err := tmpfile.Write(content); err != nil {
+		return err
+	}
+	if err := tmpfile.Close(); err != nil {
+		return err
+	}
+
+	ex, err := os.Executable()
+	if err != nil {
+		return err
+	}
+
+	real, err := filepath.EvalSymlinks(ex)
+	if err != nil {
+		return err
+	}
+
+	// Sudo copy the file
+	cmd := exec.Command("/bin/sh", "-c",
+		fmt.Sprintf("export OWNER=$(ls -l %s | awk '{ print $3 \":\" $4 }') && sudo mv %s %s.backup && sudo cp %s %s && sudo chown $OWNER %s && sudo chmod 0755 %s && sudo rm %s.backup",
+			real,       // get owner
+			real, real, // mv
+			tmpfile.Name(), real, // cp
+			real, // chown
+			real, // chmod
+			real, // rm
+		),
+	)
+
+	// prep stdin for password
+	stdin, err := cmd.StdinPipe()
+	if err != nil {
+		return err
+	}
+
+	go func() {
+		defer stdin.Close()
+		io.WriteString(stdin, "values written to stdin are passed to cmd's standard input")
+	}()
+
+	stdoutStderr, err := cmd.CombinedOutput()
+	fmt.Printf("%s\n", stdoutStderr)
+	if err != nil {
+		return err
+	}
+
+	UpdateAvailable = nil
+	UpdateData = nil
 	return nil
 }
