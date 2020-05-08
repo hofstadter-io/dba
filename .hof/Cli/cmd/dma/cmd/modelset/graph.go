@@ -4,7 +4,11 @@ import (
 	"fmt"
 	"os"
 
+	"strings"
+
 	"github.com/spf13/cobra"
+
+	"github.com/hofstadter-io/dma/cmd/dma/ga"
 )
 
 var graphLong = `show the relationship graph for a modelset`
@@ -21,6 +25,14 @@ var GraphCmd = &cobra.Command{
 	Short: "show the relationship graph for a modelset",
 
 	Long: graphLong,
+
+	PreRun: func(cmd *cobra.Command, args []string) {
+
+		cs := strings.Fields(cmd.CommandPath())
+		c := strings.Join(cs[1:], "/")
+		ga.SendGaEvent(c, strings.Join(args, "/"), 0)
+
+	},
 
 	Run: func(cmd *cobra.Command, args []string) {
 		var err error

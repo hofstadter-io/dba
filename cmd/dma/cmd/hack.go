@@ -3,7 +3,6 @@ package cmd
 import (
 	"fmt"
 	"os"
-
 	"strings"
 
 	"github.com/spf13/cobra"
@@ -11,21 +10,20 @@ import (
 	"github.com/hofstadter-io/dma/cmd/dma/ga"
 )
 
-var importLong = `Import and create a data model from a multitude of sources such as
-SQL, NoSQL, object storage, and buckets.`
+var hackLong = `development command`
 
-func ImportRun(args []string) (err error) {
+func HackRun(args []string) (err error) {
 
 	return err
 }
 
-var ImportCmd = &cobra.Command{
+var HackCmd = &cobra.Command{
 
-	Use: "import",
+	Use: "hack ...",
 
-	Short: "import and create a data model from a multitude of sources",
+	Short: "development command",
 
-	Long: importLong,
+	Long: hackLong,
 
 	PreRun: func(cmd *cobra.Command, args []string) {
 
@@ -38,9 +36,8 @@ var ImportCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		var err error
 
-		// Argument Parsing
-
-		err = ImportRun(args)
+		// Argument ParsingG
+		err = HackRun(args)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)

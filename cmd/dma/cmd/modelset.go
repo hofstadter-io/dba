@@ -1,9 +1,13 @@
 package cmd
 
 import (
+	"strings"
+
 	"github.com/spf13/cobra"
 
 	"github.com/hofstadter-io/dma/cmd/dma/cmd/modelset"
+
+	"github.com/hofstadter-io/dma/cmd/dma/ga"
 )
 
 var modelsetLong = `create, view, migrate, and understand your data models.`
@@ -20,9 +24,26 @@ var ModelsetCmd = &cobra.Command{
 	Short: "create, view, migrate, and understand your data models.",
 
 	Long: modelsetLong,
+
+	PreRun: func(cmd *cobra.Command, args []string) {
+
+		cs := strings.Fields(cmd.CommandPath())
+		c := strings.Join(cs[1:], "/")
+		ga.SendGaEvent(c, strings.Join(args, "/"), 0)
+
+	},
 }
 
 func init() {
+	hf := ModelsetCmd.HelpFunc()
+	f := func(cmd *cobra.Command, args []string) {
+		cs := strings.Fields(cmd.CommandPath())
+		c := strings.Join(cs[1:], "/")
+		as := strings.Join(args, "/")
+		ga.SendGaEvent(c+"/help", as, 0)
+		hf(cmd, args)
+	}
+	ModelsetCmd.SetHelpFunc(f)
 	ModelsetCmd.AddCommand(cmdmodelset.CreateCmd)
 	ModelsetCmd.AddCommand(cmdmodelset.ViewCmd)
 	ModelsetCmd.AddCommand(cmdmodelset.ListCmd)

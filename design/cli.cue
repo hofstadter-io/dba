@@ -26,6 +26,8 @@ import (
     DevCheckURL: "http://localhost:8080/check"
   }
 
+  Telemetry: "UA-103579574-5"
+
 	OmitRun: true
 
   PersistentPrerun: true
@@ -47,5 +49,13 @@ import (
     #ImportCommand,
     #ExportCommand,
     #GenerateCommand,
+
+    // for dev
+    schema.#Command & {
+      Name:    "hack"
+      Usage:   "hack ..."
+      Short:   "development command"
+      Long: Short
+    },
 	]
 }
