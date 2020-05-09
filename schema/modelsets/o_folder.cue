@@ -4,6 +4,8 @@ package schema
 // Equivalent to groups in the :: org -> fldr -> project -> {resources}
 // Account sort of sits outside and ties a humand to an organization, and is many to many
 
+#Folder: @modelset(object,enterprise)
+#Folder: @model()
 #Folder: {
 
 }
