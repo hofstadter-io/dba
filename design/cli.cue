@@ -21,10 +21,7 @@ import (
 
 	Releases: #CliReleases
 
-  Updates: {
-    CheckURL: "https://updates.dmatool.com/check"
-    DevCheckURL: "http://localhost:8080/check"
-  }
+  Updates: true
 
   Telemetry: "UA-103579574-5"
   TelemetryIdDir: "hof"

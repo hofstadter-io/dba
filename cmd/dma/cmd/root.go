@@ -32,7 +32,7 @@ func RootPersistentPreRun(args []string) (err error) {
 
 func RootPersistentPostRun(args []string) (err error) {
 
-	WaitPrintUpdateAvail()
+	PrintUpdateAvailable()
 
 	return err
 }
